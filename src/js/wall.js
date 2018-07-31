@@ -99,14 +99,12 @@ const bindTaskEvents = (taskListItem, checkboxEventHandle) => {
 
   deleteButton.addEventListener('click', deleteTask);
 
-  likeButton.addEventListener('click', counterLikes );
+  likeButton.addEventListener('click', counterLikes);
 };
 
 const counterLikes = () => {
-  document.getElementById('like').innerHTML= count++;
-}
-}
-
+  document.getElementById('like').innerHTML = count++;
+};
 
 const editTask = () => {
   const listItem = event.target.parentNode;
