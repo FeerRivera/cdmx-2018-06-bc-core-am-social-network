@@ -163,3 +163,5 @@ const sendTaskFirebase = () => {
 };
 
 window.onload = init;
+
+// Grafica
