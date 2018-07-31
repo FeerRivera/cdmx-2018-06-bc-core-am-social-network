@@ -3,12 +3,12 @@
 const btnSignUpModal = document.getElementById('btnSignUpModal');
 
 
-const registrar = () =>{
+const registrar = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   // cons t userName = document.getElementById('userName').value;
   localStorage.setItem('email', email);
- // alert('Ingresa tus Datos');
+  // alert('Ingresa tus Datos');
 
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
     verificar();
@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
   } else {
     console.log('No hay usuario activo');
-      
+
     // No user is signed in.
   }
 });
