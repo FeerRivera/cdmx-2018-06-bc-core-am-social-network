@@ -7,21 +7,19 @@ let refTask;
 
 const init = () => {
   addButton.addEventListener('click', sendTaskFirebase);
-  refTask = firebase.database().ref().child('tasks');
+    refTask = firebase.database().ref().child('tasks');
   getTaskOfFirebase();
-};
+}
 
 const createNewTaskElement = (taskString) => {
   // console.log(taskString);
-  // Creando los elementos
+  //Creando los elementos
   const listItem = document.createElement('li');
-  const checkbox = document.createElement('input'); // checkbox
+  const checkbox = document.createElement('input'); //checkbox
   const label = document.createElement('label');
   const editInput = document.createElement('input'); // Texto a editar
   const editButton = document.createElement('button');
   const deleteButton = document.createElement('button');
-  const likeButton = document.createElement('button');
-  const numberLike = document.createElement('p');
 
 
   editInput.type = 'text';
@@ -30,10 +28,6 @@ const createNewTaskElement = (taskString) => {
   editButton.className = 'edit';
   deleteButton.innerHTML = 'Delete &#x1F5D1;';
   deleteButton.className = 'delete';
-  likeButton.className = 'like';
-  likeButton.innerHTML = 'Likes:0';
-  numberLike.className = 'count';
-  numberLike.innerHTML = '0';
 
   label.innerHTML = taskString;
 
@@ -42,11 +36,9 @@ const createNewTaskElement = (taskString) => {
   listItem.appendChild(editInput);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
-  listItem.appendChild(likeButton);
-  listItem.appendChild(numberLike);
 
   return listItem;
-};
+}
 
 
 const addTask = (key, taskCollection) => {
@@ -56,15 +48,15 @@ const addTask = (key, taskCollection) => {
   listItem.setAttribute('data-keytask', key);
   // console.log(listItem);
   if (taskCollection.status == 'completed') {
-    listItem.querySelector('input[type=checkbox]').setAttribute('checked', true);
+    listItem.querySelector('input[type=checkbox]').setAttribute('checked',true);
     completedTaskList.appendChild(listItem);
   } else {
     // listItem.querySelector('input[type=checkbox]').setAttribute('checked',false);
     inCompletedTaskList.appendChild(listItem);
   }
 
-  bindTaskEvents(listItem, taskCompleted);
-};
+  bindTaskEvents(listItem, taskCompleted)
+}
 
 const taskCompleted = () => {
   const listItem = event.target.parentNode;
@@ -77,40 +69,36 @@ const taskCompleted = () => {
       completedTaskList.appendChild(listItem);
       refTaskToCompleted.update({
         status: 'completed'
-      });
+      })
     } else {
       inCompletedTaskList.appendChild(listItem);
 
       refTaskToCompleted.update({
         status: 'incompleted'
-      });
+      })
     }
-  });
-};
+  })
+
+
+}
 
 const bindTaskEvents = (taskListItem, checkboxEventHandle) => {
   const checkbox = taskListItem.querySelector('input[type=checkbox]');
   const editButton = taskListItem.querySelector('button.edit');
   const deleteButton = taskListItem.querySelector('button.delete');
-  const likeButton = taskListItem.querySelector('button.like');
-  const numberLike = taskListItem.querySelector('p.count');
 
   editButton.addEventListener('click', editTask);
 
   deleteButton.addEventListener('click', deleteTask);
 
-  likeButton.addEventListener('click', counterLikes );
-};
 
-const counterLikes = () => {
-  document.getElementById('like').innerHTML= count++;
 }
 
 const editTask = () => {
   const listItem = event.target.parentNode;
   const keyListItem = event.target.parentNode.dataset.keytask;
-  const editInput = listItem.querySelector('input[type=text]');
-  const label = listItem.querySelector('label');
+  const editInput = listItem.querySelector('input[type=text]')
+  const label  = listItem.querySelector('label');
   const editButton = event.target;
   const containsClass = listItem.classList.contains('editMode');
 
@@ -122,71 +110,64 @@ const editTask = () => {
       console.log(containsClass, listItem);
       refTaskToEdit.update({
         contenidoTask: editInput.value
-      });
+      })
       editButton.innerHTML = 'Edit ';
       listItem.classList.remove('editMode');
       editInput.value = '';
     } else {
-      console.log(containsClass, listItem);
+      console.log(containsClass, listItem)
       editButton.innerHTML = 'Save ';
       editInput.value = data.contenidoTask;
-      listItem.classList.add('editMode');
+      listItem.classList.add('editMode')
     }
-  });
-};
+
+  })
+
+}
 
 const deleteTask = () => {
   const keyListItem = event.target.parentNode.dataset.keytask;
   const refTaskToDelete = refTask.child(keyListItem);
   refTaskToDelete.remove();
-  alert('Seguro lo quieres borrar');
-};
+}
 
 const getTaskOfFirebase = () => {
   refTask.on('value', (snapshot) => {
     inCompletedTaskList.innerHTML = '';
-    const data = snapshot.val();
+    const data = snapshot.val()
     for (var key in data) {
-      addTask(key, data[key]);
+      addTask(key, data[key])
     }
-  });
-};
+  })
+}
 
 const sendTaskFirebase = () => {
   refTask.push({
-    contenidoTask: taskInput.value,
-    status: 'incomplete'
+    contenidoTask : taskInput.value,
+    status : 'incomplete'
   });
   taskInput.value = '';
-};
+}
 
-window.onload = init;
+window.onload = init
 
-// Grafica
-new Chart(document.getElementById('polar-chart'), {
-  type: 'horizontalBar',
-  data: {
-    labels: ['Cereales integrales', 'Verduras y frutas', 'Proteinas', 'Lacteos', 'Grasas'],
-    datasets: [
-      {
-        label: 'Porcentaje de tipos de alimentos',
-        backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
-        data: [40, 30, 15, 10, 5]
+//Grafica
+new Chart(document.getElementById("polar-chart"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Cereales integrales", "Verduras y frutas", "Proteinas", "Lacteos", "Grasas"],
+      datasets: [
+        {
+          label: "Porcentaje de tipos de alimentos",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [40,30,15,10,5]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Gráfica de alimentación saludable'
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Gráfica de alimentación saludable'
     }
-  }
 });
-
-// contador de likes
-let LikesButton = document.getElementById('Like'),
-  counter = 0;
-LikesButton.onclick = function() {
-  counter += 1;
-  LikesButton.innerHTML = 'Likes: ' + counter;
-};
