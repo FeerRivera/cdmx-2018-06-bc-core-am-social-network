@@ -105,8 +105,6 @@ const bindTaskEvents = (taskListItem, checkboxEventHandle) => {
 const counterLikes = () => {
   document.getElementById('like').innerHTML= count++;
 }
-}
-
 
 const editTask = () => {
   const listItem = event.target.parentNode;
