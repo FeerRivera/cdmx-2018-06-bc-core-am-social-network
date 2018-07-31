@@ -137,7 +137,11 @@ const deleteTask = () => {
   const keyListItem = event.target.parentNode.dataset.keytask;
   const refTaskToDelete = refTask.child(keyListItem);
   refTaskToDelete.remove();
-  alert('Seguro lo quieres borrar');
+  const deleteSure = confirm("Seguro lo quieres borrar");
+ if (deleteSure == true)
+   refTaskToDelete();
+ else
+   alert("bueno,vale!")
 };
 
 const getTaskOfFirebase = () => {
