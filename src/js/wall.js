@@ -105,7 +105,7 @@ const bindTaskEvents = (taskListItem, checkboxEventHandle) => {
 const counterLikes = () => {
   document.getElementById('like').innerHTML= count++;
 }
-}
+
 
 
 const editTask = () => {
@@ -142,10 +142,11 @@ const deleteTask = () => {
   const refTaskToDelete = refTask.child(keyListItem);
   refTaskToDelete.remove();
   const deleteSure = confirm("Seguro lo quieres borrar");
- if (deleteSure == true)
+  if (deleteSure == true)
    refTaskToDelete();
- else
-   alert("bueno,vale!")
+  else
+  (deleteSure ==false )
+  alert("Bueno,vale!");
 };
 
 const getTaskOfFirebase = () => {
