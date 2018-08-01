@@ -101,10 +101,9 @@ loginEmail: (emailLogin, passLogin) => {
 
 //login con google
 loginGoogle: () => {
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
 
     // No user is signed in.
-  }
+
 });
 
 
