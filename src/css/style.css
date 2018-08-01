@@ -1,73 +1,105 @@
-#datosUs {
-  background: #AAF0E5 
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#logo {
+  margin-right: 100%;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: right;
   margin: 15%;
-}
-
-#fondo {
-  text-align: center;
-  vertical-align: middle;
-  margin: 15%;
-}
-
-.row {
-  height: 100%;
-}
-
-input[type=password] {
-  padding: 15px;
-  margin: 10px 0 10px 0;
-  cursor: pointer;
-}
-
-input[type=email] {
-  padding: 15px;
-  margin: 15px 0 10px 0;
-  cursor: pointer;
-}
-
-h1 {
-  font-family: 'Audiowide', cursive;
-}
-
-.titutlo {
-  font-family: 'Audiowide', cursive;
-}
-<<<<<<< HEAD:src/views/style.css
-=======
-=======
-#datosUs{
-  background: #AAF0E5
-  text-align: center;
-  vertical-align: middle;
-  margin: 15% ;
-
-;
-}
-#fondo{
-  text-align: center;
-  vertical-align: middle;
-  margin: 12% ;
 
 }
-.row{
-  height: 100%;
+
+.topnav {
+	padding: 10px ;
+    overflow: hidden;
+    background-color: #333;
+    text-align: right;
 }
-input[type=password]{
-  padding: 15px;
-     margin: 10px 0 10px 0;
-     cursor: pointer;
+
+.topnav input {
+	width: 10%;
+    padding: 5px;
 }
-input[type=email]{
-  padding: 15px;
-     margin: 15px 0 10px 0;
-     cursor: pointer;
+
+.topnav button {
+	width: 10%;
+    padding: 5px;
 }
-h1{
-font-family: 'Audiowide', cursive;
+
+
+.btn {
+	background-color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 60%;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #404040;
+    font-size: 20px;
+	border-radius: 30px;
+    margin: 10px 20%;
 }
-.titutlo{
-  font-family: 'Audiowide', cursive;
+
+.btn:hover {
+    color: white;
+    transition-duration: 0.3s;
 }
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d:src/css/style.css
+
+.btn.Register {
+	border: 2px solid #4c0080;
+    }
+
+.btn.Register:hover {
+	background-color: #4c0080;
+    }
+
+.btn.Facebook {
+	border: 2px solid #3366cc;
+    }
+
+.btn.Facebook:hover {
+	background-color: #3366cc;
+    }
+
+.btn.GitHub {
+	border: 2px solid black;
+    }
+
+.btn.GitHub:hover {
+	background-color: black;
+    }
+
+.btn.GooglePlus {
+	border: 2px solid #ff661a;
+    }
+
+.btn.GooglePlus:hover {
+	background-color: #ff661a;
+    }
+
+.column {
+	float: left;
+    width: 50%;
+    display: block;
+    text-align: center;
+
+}
+
+
+.column.right {
+	padding: 50px 0 0 0;
+}
+
+@media screen and (max-width: 600px) {
+    .column.left, .column.right {
+        width: 100%;
+    }
