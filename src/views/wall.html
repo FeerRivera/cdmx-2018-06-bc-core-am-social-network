@@ -1,90 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Run 4 Fun</title>
+   <head>
+      <meta charset="utf-8">
+      <title>Run 4 Fun</title>
       <link rel="shortcut icon" href="imagenes/running.png"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href=../css/main.css>
-  <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
-  <!-- Chart.js -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" integrity="sha256-J2sc79NPV/osLcIpzL3K8uJyAD7T5gaEFKlLDM18oxY=" crossorigin="anonymous">
- </head>
-<!--Parte de el logo-->
-
-    <!--parte del perfil-->
-<div class="firstRow">
-<section class="firstColumn short">
-   <div class="container-fluid mt-6">
-   <div class="row">
-     <div style="width:100%">
-       <div class="card border-secondary" style="width:100%">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href=../css/main.css>
+      <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+      <!-- Chart.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" integrity="sha256-J2sc79NPV/osLcIpzL3K8uJyAD7T5gaEFKlLDM18oxY=" crossorigin="anonymous">
+   </head>
+   <!--Parte de el logo-->
+   <!--parte del perfil-->
+   <div class="firstRow">
+   <section class="firstColumn short">
+      <div class="container-fluid mt-6">
+      <div class="row">
+      <div style="width:100%">
+      <div class="card border-secondary" style="width:100%">
          <img id="photo-user" class="card-img-top" style="width:100%" id="user-image">
-         <p id="userName"><!--Aquí irá el nombre--></p>
-         <p id="userEmail"><!--Aquí irá el correo--></p>
-       <!--Aquí debe ir la informacion del usuario-->
-
-
+         <p id="userName">
+            <!--Aquí irá el nombre-->
+         </p>
+         <p id="userEmail">
+            <!--Aquí irá el correo-->
+         </p>
+         <!--Aquí debe ir la informacion del usuario-->
          <div class="card-body text-center">
-           <div class="modal-body">
+            <div class="modal-body">
+            </div>
+            <input id="btnLogOut" type="button" class="btn btn-outline-dark" value="Cerrar sesión"></input>
          </div>
-         <input id="btnLogOut" type="button" class="btn btn-outline-dark" value="Cerrar sesión"></input>
-       </div>
-     </div>
+      </div>
    </section>
-
-    <!--amigos -->
-
-<!--coments-->
-
-</section>
-
-<section class="main-section firstColumn long">
-<div id="newPost"class="container">
-<div class="row">
-<div class="col-sm">
-<div class="card publication">
-<div class="card-body">
-<form action="">
-<div class="form-group">
-  <span id = "sesionUser"></span>
-  <input id="newTxt"type="text" class="form-control" placeholder="¿Cúal fue tu ruta hoy?"/>
-</div>
-<button id="newPost" type="button" class="btn btn-outline-primary" placeholder="compartir"><i class="fas fa-comments"></i></button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-<div class="row">
-  <div class="col-sm">
-    <div id="wallPost" class="card publication">
-     <div  class="card-body">
-        <p id= "text" class="card-text">Comentarios</p>
-        <div class="text-right">
-
-        </div>
+   <!--amigos -->
+   <!--coments-->
+   </section>
+   <section class="main-section firstColumn long">
+      <div id="newPost"class="container">
+         <div class="row">
+            <div class="col-sm">
+               <div class="card publication">
+                  <div class="card-body">
+                     <form action="">
+                        <div class="form-group">
+                           <span id = "sesionUser"></span>
+                           <input id="newTxt"type="text" class="form-control" placeholder="¿Cúal fue tu ruta hoy?"/>
+                        </div>
+                        <button id="newPost" type="button" class="btn btn-outline-primary" placeholder="compartir"><i class="fas fa-comments"></i></button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+   </section>
+   </div>
+   <div class="row">
+      <div class="col-sm">
+         <div id="wallPost" class="card publication">
+            <div  class="card-body">
+               <p id= "text" class="card-text">Comentarios</p>
+               <div class="text-right">
+               </div>
+            </div>
+         </div>
       </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/license.js">
-</script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-</body>
-     <script src="../js/wall.js"></script>
-     <script src="../js/index.js"></script>
-     <script src="../js/logout.js"></script>
-
-
-  </body>
+   </div>
+   </section>
+   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="../js/license.js"></script>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+   </body>
+   <script src="../js/wall.js"></script>
+   <script src="../js/index.js"></script>
+   <script src="../js/logout.js"></script>
+   </body>
 </html>
