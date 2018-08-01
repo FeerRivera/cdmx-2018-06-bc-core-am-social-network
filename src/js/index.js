@@ -23,7 +23,6 @@ const registrar = () =>{
     // ...
   });
 };
-btnSignUpModal.addEventListener('click', registrar);
 
 // Ingreso de Usuario y contraseña
 const btnentrar = document.getElementById('btnentrar');
@@ -71,7 +70,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
   } else {
     console.log('No hay usuario activo');
-      
+
     // No user is signed in.
   }
 });
@@ -120,4 +119,3 @@ window.userRegister = {
     }
   },
 };
-
