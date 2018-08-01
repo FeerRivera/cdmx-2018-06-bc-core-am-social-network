@@ -78,7 +78,7 @@ Imagen del Login:
 ![Login](imagenesux/Screenshot_20180801-005053.png)
 
 Por lo que se decidio cambiar un poco el nombre de la red social:
-![Logo](img_20180731_210717.jpg)
+![Logo](imagenesux/img_20180731_210717.jpg)
 
 ## MODO DE INGRESO A LA RED SOCIAL
 
