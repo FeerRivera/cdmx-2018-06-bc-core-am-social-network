@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Registro Usuarios Nuevos
 
 const btnSignUpModal = document.getElementById('btnSignUpModal');
@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
   } else {
     console.log('No hay usuario activo');
-=======
+
 window.userRegister = {
 
 //registro nuevo
@@ -101,8 +101,6 @@ loginEmail: (emailLogin, passLogin) => {
 
 //login con google
 loginGoogle: () => {
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
-
     // No user is signed in.
   }
 });
@@ -124,16 +122,16 @@ window.userRegister = {
     }
   },
 
-<<<<<<< HEAD
+
 
   loginFacebook: () => {
     if (!firebase.auth().currentUser) {
-=======
+
 //login con facebook
 loginFacebook: () => {
 
 if (!firebase.auth().currentUser) {
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
+
       const provider = new firebase.auth.FacebookAuthProvider();
       provider.addScope('public_profile');
       firebase.auth().signInWithPopup(provider).then(result => {
@@ -145,8 +143,7 @@ if (!firebase.auth().currentUser) {
     }
   },
 
-<<<<<<< HEAD
-  loginGitHub: () => {
+ loginGitHub: () => {
     if (!firebase.auth().currentUser) {
       const provider = new firebase.auth.GithubAuthProvider();
       provider.addScope('repo');
@@ -154,7 +151,7 @@ if (!firebase.auth().currentUser) {
         location.href = ('../views/wall.html');
       })
         .catch(e => alert(e.message));
-=======
+
 //login con github
 loginGitHub: () => {
 if (!firebase.auth().currentUser) {
@@ -164,14 +161,11 @@ if (!firebase.auth().currentUser) {
       location.href = ("../src/views/wall.html");
     })
     .catch(e => alert(e.message));
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
+
     } else {
       firebase.auth().signOut();
     }
   },
-<<<<<<< HEAD
-=======
-
 
 const userData = firebase.auth().currentUser;
 if (user != null) {
@@ -193,5 +187,5 @@ if (user != null) {
        console.log('Error paracerrar sesión');
      });
  }
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
+
 };
