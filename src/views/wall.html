@@ -3,36 +3,71 @@
   <head>
     <meta charset="utf-8">
     <title>Run 4 Fun</title>
-      <link rel="shortcut icon" href="imagenes/running.png"/>
+      <link rel="shortcut icon" href="/views/imagenes/running.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href=../css/main.css>
-  <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
   <!-- Chart.js -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" integrity="sha256-J2sc79NPV/osLcIpzL3K8uJyAD7T5gaEFKlLDM18oxY=" crossorigin="anonymous">
  </head>
 <!--Parte de el logo-->
-
+    <div id="row" class="row">
+      <div id="topLOGO" class="col"> ...
+      </div>
+      <div id="topLOGO" class="col-6">...
+      </div>
+      <div id="topLOGO" class="col">...
+      </div>
+    </div>
+  <div id="row1" class="row">
+    <div id="topLOGO" class="col"> ...
+    </div>
+    <div id="topLOGO" class="col">...
+    </div>
+    <div id="topLOGO" class="col">...
+    </div>
+  </div>
+  <body>
     <!--parte del perfil-->
-<div class="firstRow">
-<section class="firstColumn short">
-   <div class="container-fluid mt-6">
-   <div class="row">
-     <div style="width:100%">
-       <div class="card border-secondary" style="width:100%">
-         <img id="photo-user" class="card-img-top" style="width:100%" id="user-image">
-         <p id="userName"><!--Aquí irá el nombre--></p>
-         <p id="userEmail"><!--Aquí irá el correo--></p>
-       <!--Aquí debe ir la informacion del usuario-->
+<input id="btnLogOut" type="button" class="btn btn-outline-dark" value="Cerrar sesión"></input>
 
-<<<<<<< HEAD
+    <div id="row2" class="row">
+      <div class="col">
+        <div class="card" style="width:400px">
+    <img class="card-img-top" src="http://cdn.c.photoshelter.com/img-get/I0000LrKQSGS9aXE/s/750/750/Woman-runner.jpg" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">Diane Prince</h4>
+      <p class="card-text">27 años <br>
+      Ciudad de México <br>
+      Actividades favoritas: <br>
+      Runner, basquetball, soccer <br>
+      Intereses: <br>
+      "Me interesa encontrar personas con las cuales salir a correr y compartir direcciones de lugares sanos para comer" </p>
+    </div>
+    <!--amigos -->
+    <div class="container">
+  <h2>Amigos</h2>
 
-         <div class="card-body text-center">
-           <div class="modal-body">
-         </div>
-         <input id="btnLogOut" type="button" class="btn btn-outline-dark" value="Cerrar sesión"></input>
-       </div>
-=======
+  <div class="card" style="width:200px">
+    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwd9SrOmmzSGXTLgsXucjUo3yiDo6KLssb8H-nDftBy2NPhYsh" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Billy Batson</h4>
+      <p class="card-text">23 AÑOS, CDMX</p>
+      <a href="#" class="btn btn-primary">Ver perfil</a>
+    </div>
+  </div>
+  <br>
+  <div class="card" style="width:200px">
+    <img class="card-img-bottom" src="http://womensrunning-gy3ykgdmyg8v.stackpathdns.com/wp-content/uploads/2015/07/shutterstock_203733427-629x420.jpg" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Susan Storm</h4>
+      <p class="card-text">25 años, CDMX</p>
+      <a href="#" class="btn btn-primary">Ver perfil</a>
+    </div>
+
   </div>
 </div>
   </div>
@@ -44,11 +79,10 @@
        <p>
          <label for="new-task">Nuevo post</label>
          <input id="new-task" type="text">
-         <button id="share">Compartir</button>
+         <button>Compartir</button>
        </p>
 
        <h3>Comentarios</h3>
-      
        <ul id="incomplete-tasks">
 
        </ul>
@@ -62,58 +96,39 @@
            <button class="delete">Delete</button>
          </li-->
        </ul>
->>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
      </div>
-   </section>
 
-    <!--amigos -->
-
-<!--coments-->
-
-</section>
-
-<section class="main-section firstColumn long">
-<div id="newPost"class="container">
-<div class="row">
-<div class="col-sm">
-<div class="card publication">
-<div class="card-body">
-<form action="">
-<div class="form-group">
-  <span id = "sesionUser"></span>
-  <input id="newTxt"type="text" class="form-control" placeholder="¿Cúal fue tu ruta hoy?"/>
 </div>
-<button id="newPost" type="button" class="btn btn-outline-primary" placeholder="compartir"><i class="fas fa-comments"></i></button>
-</form>
+<!-- Grupos -->
+  <center><div id="Grupos" class="col">
+    <div id="grupo" class="card">
+  <div class="card-body">Grupos</div>
 </div>
+<p></p>
+<div id="RCDMX" class="card">
+<div class="card-body">Runners CDMX</div>
 </div>
+<p></p>
+<div id="MCDMX" class="card">
+  <div class="card-body">Mujeres corredoras</div>
 </div>
+<p></p>
+<div id="FOOD" class="card">
+  <div class="card-body">Restaurantes CDMX</div>
 </div>
-</section>
+<p></p>
+<!--Grafica -->
+<div id="Grafic" class="Card">
+<canvas id="polar-chart" width="300" height="150"></canvas>
 </div>
-<div class="row">
-  <div class="col-sm">
-    <div id="wallPost" class="card publication">
-     <div  class="card-body">
-        <p id= "text" class="card-text">Comentarios</p>
-        <div class="text-right">
-
-        </div>
-      </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
+<p></p>
+</iframe>
+</div>
+</center>
+</div>
 
 
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/license.js">
 </script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
