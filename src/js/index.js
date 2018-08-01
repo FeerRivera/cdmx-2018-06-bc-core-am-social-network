@@ -103,7 +103,7 @@ loginEmail: (emailLogin, passLogin) => {
 loginGoogle: () => {
     // No user is signed in.
   }
-});
+},
 
 
 // login
