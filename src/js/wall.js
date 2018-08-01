@@ -1,165 +1,79 @@
-const taskInput = document.getElementById('new-task');
-const addButton = document.getElementsByTagName('Button')[0];
-const inCompletedTaskList = document.getElementById('incomplete-tasks');
-const completedTaskList = document.getElementById('completed-tasks');
+let inputTxt = document.getElementById("newTxt");
+let newPost = document.getElementById("newPost");
+let wallPost = document.getElementById("wallPost");
+let deletePost = document.getElementById("deletePost");
+let editPost = document.getElementById("editPost");
 
-let refTask;
 
-const init = () => {
-  addButton.addEventListener('click', sendTaskFirebase);
-  refTask = firebase.database().ref().child('tasks');
-  getTaskOfFirebase();
+let sesionUser = document.getElementById("sesionUser");
+let userName = document.getElementById("userName");
+let userEmail = document.getElementById("userEmail");
+let profileImage = document.getElementById("photo-user");
+
+
+let runUser;
+
+const postCommit = () => {
+    newPost.addEventListener('click', saveData = () => {
+        const actUser = firebase.auth().currentUser;
+        const postTxt = inputTxt.value;
+        if (postTxt == '') {
+
+        } else {
+            const userKey = firebase.database().ref().child('Mensajes').push().key;
+            let update = {
+                user: actUser.uid,
+                userName: actUser.displayName,
+                post: postTxt
+            };
+            firebase.database().ref(`Mensajes/${userKey}`).set(update);
+            document.getElementById('newTxt').value = '';
+        }
+    });
 };
 
-const createNewTaskElement = (taskString) => {
-  // console.log(taskString);
-  // Creando los elementos
-  const listItem = document.createElement('li');
-  const checkbox = document.createElement('input'); // checkbox
-  const label = document.createElement('label');
-  const editInput = document.createElement('input'); // Texto a editar
-  const editButton = document.createElement('button');
-  const deleteButton = document.createElement('button');
-  const likeButton = document.createElement('button');
-  const numberLike = document.createElement('p');
+const postByUser = (user) => {
+    const confirmUser = firebase.auth().currentUser;
+    runUser = confirmUser.displayName;
+    sesionUser.innerHTML = 'Hola' + ' ' + runUser;
+};
+
+const userPorfile = () => {
+    firebase.auth().onAuthStateChanged(checkStatusUser = (user) => {
+        if (user) {
+            let runName = user.displayName;
+            let runEmail = user.email;
+            let runPhoto = user.photoURL || 'https://sss.ukzn.ac.za/wp-content/uploads/2017/12/profile-placeholder.png';
+            userName.textContent = runName;
+            userEmail.textContent = runEmail;
+            profileImage.setAttribute('src', runPhoto + '?type=large');
+        }
+        postByUser();
+    });
+
+    firebase.database().ref('Mensajes')
+        .on('child_added', (userKey) => {
 
 
-  editInput.type = 'text';
+            wallPost.innerHTML +=
+                `<div id="wallPost" class="card publication">
+      <div  class="card-body">
+        <p>${userKey.val().userName}</p>
+        <p>${userKey.val().post}</p>
+        <div class="text-right">
+        <a  class="btn btn-outline-info" onclick="likePost"><i class="fas fa-thumbs-up"></i></a>
+        <a  class="btn btn-outline-secondary" onclick="editPost"><i class="fas fa-edit"></i></a>
+        <a class="btn btn-outline-danger" onclick="deletPost"><i class="fas fa-trash-alt"></i></a>
+        </div>
+      </div>
+    </div>`;
+        });
 
-  editButton.innerHTML = 'Edit &#9998;';
-  editButton.className = 'edit';
-  deleteButton.innerHTML = 'Delete &#x1F5D1;';
-  deleteButton.className = 'delete';
-  likeButton.className = 'like';
-  likeButton.innerHTML = 'Likes:0';
-  numberLike.className = 'count';
-  numberLike.innerHTML = '0';
-
-  label.innerHTML = taskString;
-
-
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
-  listItem.appendChild(likeButton);
-  listItem.appendChild(numberLike);
-
-  return listItem;
 };
 
 
-const addTask = (key, taskCollection) => {
-  // console.log('key: ', key , ' taskCollection: ', taskCollection);
-  // console.log(taskCollection.contenidoTask);
-  const listItem = createNewTaskElement(taskCollection.contenidoTask);
-  listItem.setAttribute('data-keytask', key);
-  // console.log(listItem);
-  if (taskCollection.status == 'completed') {
-    listItem.querySelector('input[type=checkbox]').setAttribute('checked', true);
-    completedTaskList.appendChild(listItem);
-  } else {
-    // listItem.querySelector('input[type=checkbox]').setAttribute('checked',false);
-    inCompletedTaskList.appendChild(listItem);
-  }
 
-  bindTaskEvents(listItem, taskCompleted);
+window.onload = function() {
+    postCommit();
+    userPorfile();
 };
-
-const taskCompleted = () => {
-  const listItem = event.target.parentNode;
-  const keyListItem = event.target.parentNode.dataset.keytask;
-  const refTaskToCompleted = refTask.child(keyListItem);
-  refTaskToCompleted.once('value', (snapshot) => {
-    const data = snapshot.val();
-    console.log(event.target.checked);
-    if (event.target.checked) {
-      completedTaskList.appendChild(listItem);
-      refTaskToCompleted.update({
-        status: 'completed'
-      });
-    } else {
-      inCompletedTaskList.appendChild(listItem);
-
-      refTaskToCompleted.update({
-        status: 'incompleted'
-      });
-    }
-  });
-};
-
-const bindTaskEvents = (taskListItem, checkboxEventHandle) => {
-  const checkbox = taskListItem.querySelector('input[type=checkbox]');
-  const editButton = taskListItem.querySelector('button.edit');
-  const deleteButton = taskListItem.querySelector('button.delete');
-  const likeButton = taskListItem.querySelector('button.like');
-  const numberLike = taskListItem.querySelector('p.count');
-
-  editButton.addEventListener('click', editTask);
-
-  deleteButton.addEventListener('click', deleteTask);
-
-  likeButton.addEventListener('click', counterLikes);
-};
-
-const counterLikes = () => {
-  document.getElementById('like').innerHTML = count++;
-};
-
-const editTask = () => {
-  const listItem = event.target.parentNode;
-  const keyListItem = event.target.parentNode.dataset.keytask;
-  const editInput = listItem.querySelector('input[type=text]');
-  const label = listItem.querySelector('label');
-  const editButton = event.target;
-  const containsClass = listItem.classList.contains('editMode');
-
-  const refTaskToEdit = refTask.child(keyListItem);
-  refTaskToEdit.once('value', (snapshot) => {
-    const data = snapshot.val();
-
-    if (containsClass) {
-      console.log(containsClass, listItem);
-      refTaskToEdit.update({
-        contenidoTask: editInput.value
-      });
-      editButton.innerHTML = 'Edit ';
-      listItem.classList.remove('editMode');
-      editInput.value = '';
-    } else {
-      console.log(containsClass, listItem);
-      editButton.innerHTML = 'Save ';
-      editInput.value = data.contenidoTask;
-      listItem.classList.add('editMode');
-    }
-  });
-};
-
-const deleteTask = () => {
-  confirm('Seguro lo quieres borrar');
-  const keyListItem = event.target.parentNode.dataset.keytask;
-  const refTaskToDelete = refTask.child(keyListItem);
-  refTaskToDelete.remove();
-};
-
-const getTaskOfFirebase = () => {
-  refTask.on('value', (snapshot) => {
-    inCompletedTaskList.innerHTML = '';
-    const data = snapshot.val();
-    for (var key in data) {
-      addTask(key, data[key]);
-    }
-  });
-};
-
-const sendTaskFirebase = () => {
-  refTask.push({
-    contenidoTask: taskInput.value,
-    status: 'incomplete'
-  });
-  taskInput.value = '';
-};
-
-window.onload = init;
-
-// Grafica
