@@ -38,6 +38,7 @@ const postByUser = (user) => {
   sesionUser.innerHTML = 'Hola' + ' ' + runUser;
 };
 
+<<<<<<< HEAD
 const userPorfile = () => {
   firebase.auth().onAuthStateChanged(checkStatusUser = (user) => {
     if (user) {
@@ -47,10 +48,44 @@ const userPorfile = () => {
       userName.textContent = runName;
       userEmail.textContent = runEmail;
       profileImage.setAttribute('src', runPhoto + '?type=large');
+=======
+const counterLikes = () => {
+  document.getElementById('like').innerHTML= count++;
+}
+
+
+
+const editTask = () => {
+  const listItem = event.target.parentNode;
+  const keyListItem = event.target.parentNode.dataset.keytask;
+  const editInput = listItem.querySelector('input[type=text]');
+  const label = listItem.querySelector('label');
+  const editButton = event.target;
+  const containsClass = listItem.classList.contains('editMode');
+
+  const refTaskToEdit = refTask.child(keyListItem);
+  refTaskToEdit.once('value', (snapshot) => {
+    const data = snapshot.val();
+
+    if (containsClass) {
+      console.log(containsClass, listItem);
+      refTaskToEdit.update({
+        contenidoTask: editInput.value
+      });
+      editButton.innerHTML = 'Edit ';
+      listItem.classList.remove('editMode');
+      editInput.value = '';
+    } else {
+      console.log(containsClass, listItem);
+      editButton.innerHTML = 'Save ';
+      editInput.value = data.contenidoTask;
+      listItem.classList.add('editMode');
+>>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
     }
     postByUser();
   });
 
+<<<<<<< HEAD
   firebase.database().ref('Mensajes')
     .on('child_added', (userKey)=>{
       wallPost.innerHTML +=
@@ -66,6 +101,19 @@ const userPorfile = () => {
       </div>
     </div>`;
     });
+=======
+const deleteTask = () => {
+  const keyListItem = event.target.parentNode.dataset.keytask;
+  const refTaskToDelete = refTask.child(keyListItem);
+  refTaskToDelete.remove();
+  const deleteSure = confirm("Seguro lo quieres borrar");
+  if (deleteSure == true)
+   refTaskToDelete();
+  else
+  (deleteSure ==false )
+  alert("Bueno,vale!");
+};
+>>>>>>> 5ff907ebe8abd67eaeaa8d35e9d69927d281df6d
 
 };
 
