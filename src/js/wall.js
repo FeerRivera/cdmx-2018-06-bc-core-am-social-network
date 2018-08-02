@@ -59,18 +59,13 @@ const userPorfile = () => {
         <p>${userKey.val().userName}</p>
         <p>${userKey.val().post}</p>
         <div class="text-right">
-        <button id"likeBtn" class="btn btn-outline-info" "><i class="fas fa-thumbs-up"></i></button>
-        <button id="editBtn" class="btn btn-outline-secondary" ><i class="fas fa-edit"></i></button>
-        <button id"trashBtn" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+        <a  class="btn btn-outline-info" onclick="likePost"><i class="fas fa-thumbs-up"></i></a>
+        <a  class="btn btn-outline-secondary" onclick="editPost"><i class="fas fa-edit"></i></a>
+        <a class="btn btn-outline-danger" onclick="deletPost"><i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
     </div>`;
     });
-
-    const likeBtn =wallPost.querySelector('button.like');
-    const editBtn =wallPost.querySelector('button.edit');
-    const trashBtn =wallPost.querySelector('button.trash');
-
 };
 
 
